@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row justify-content-center">
+
+    <div class="col-lg-8">
+
+        <div class="glass-card p-5">
+
+            <div class="mb-4">
+                <h1 class="page-title">
+                    {{ title }}
+                </h1>
+
+                <p class="subtitle">
+                    Fill all product details below.
+                </p>
+            </div>
+
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                {{ form.as_p }}
+
+                <button class="btn btn-dark custom-btn px-5 mt-3">
+                    Save Product
+                </button>
+            </form>
+
+{% endblock %}

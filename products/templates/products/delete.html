@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row justify-content-center align-items-center">
+
+    <div class="col-lg-6">
+
+        <div class="glass-card p-5 text-center position-relative overflow-hidden">
+
+            <!-- Decorative Circle -->
+            <div style="
+                position:absolute;
+                width:220px;
+                height:220px;
+                background:rgba(255,0,0,0.05);
+                border-radius:50%;
+                top:-80px;
+                right:-80px;
+            "></div>
+
+            <!-- Warning Icon -->
+            <div class="mb-4">
+
+                <div style="
+                    width:100px;
+                    height:100px;
+                    margin:auto;
+                    border-radius:50%;
+                    background:linear-gradient(to right,#ff4d4d,#ff6b6b);
+                    display:flex;
+                    align-items:center;
+                    justify-content:center;
+                    box-shadow:0 10px 30px rgba(255,0,0,0.25);
+                ">
+
+                    <span style="
+                        font-size:45px;
+                        color:white;
+                        font-weight:bold;
+                    ">
+                        !
+                    </span>
+
+                </div>
+
+            </div>
+
+            <!-- Heading -->
+            <h1 class="page-title mb-3">
+                Delete Product
+            </h1>
+
+            <!-- Subtitle -->
+            <p class="subtitle mb-4">
+                This action cannot be undone.
+                Please confirm before deleting.
+            </p>
+
+            <!-- Product Card -->
+            <div class="bg-white rounded-4 shadow-sm p-4 mb-5">
+
+                {% if product.image %}
+                <img src="{{ product.image.url }}"
+                     class="img-fluid rounded-4 mb-4"
+                     style="
+                        width:180px;
+                        height:180px;
+                        object-fit:cover;
+                     ">
+                {% endif %}
+
+                <h3 class="fw-bold mb-2">
+                    {{ product.name }}
+                </h3>
+
+                <div class="price-tag mb-3">
+                    ₹{{ product.price }}
+                </div>
+
+                <span class="badge-stock">
+                    {{ product.quantity }} In Stock
+                </span>
+
+            </div>
+
+            <!-- Delete Form -->
+            <form method="POST">
+                {% csrf_token %}
+
+                <div class="d-flex justify-content-center gap-3 flex-wrap">
+
+                    <button type="submit"
+                            class="btn btn-danger custom-btn px-5 py-3">
+
+                        Yes, Delete
+
+                    </button>
+
+                    <a href="{% url 'product_list' %}"
+                       class="btn btn-outline-dark custom-btn px-5 py-3">
+
+                        Cancel
+
+                    </a>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
