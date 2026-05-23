@@ -1,4 +1,7 @@
+from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
+
+from core import settings
 from .models import Product
 from .forms import ProductForm
 
@@ -52,3 +55,6 @@ def delete_product(request, pk):
     return render(request, 'products/delete.html', {
         'product': product
     })
+
+def test_media(request):
+    return HttpResponse(settings.MEDIA_ROOT)
