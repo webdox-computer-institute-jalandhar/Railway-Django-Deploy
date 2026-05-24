@@ -13,6 +13,14 @@ DEBUG = os.getenv("DEBUG") == "True"
 
 ALLOWED_HOSTS = ['*']
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://railway-django-deploy-production.up.railway.app",
+]
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+
+
 # Applications
 INSTALLED_APPS = [
     # Django Apps
